@@ -7,9 +7,16 @@ package com.sparrow.service.iface;
  */
 public interface IFileService {
 	
-	void save(byte[] content, String filename);
+	String save(byte[] content, String filename);
 	
 	byte[] get(String fileName);
+	
+	/**
+	 * get file by id
+	 * @param id
+	 * @return
+	 */
+	byte[] getFileById(String id);
 	
 	void delete(String fileName);
 	

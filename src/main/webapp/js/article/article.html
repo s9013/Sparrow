@@ -13,7 +13,7 @@
 	<div class="row">
 
 		<div class="col-lg-4" ng-repeat="article in articles"
-			style="height: 150px">
+			style="height: 250px">
 			<div class="panel panel-success">
 				<div class="panel-heading">
 					<h3 class="panel-title" style="text-align: center;">
@@ -29,12 +29,15 @@
 
 	</div>
 	<!-- /.row -->
-
-	<div class="pull-right">
-		<pagination boundary-links="true" total-items="totalItems"
-			ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;"  ng-click="pageChanged()" max-size="maxSize" items-per-page ="itemsPerPage"
-			first-text="&laquo;" last-text="&raquo;"></pagination>
+	
+	<div style="margin-top: 100px;">
+		<div class=" row pull-right ">
+			<pagination boundary-links="true" total-items="totalItems"
+				ng-model="currentPage" previous-text="&lsaquo;" next-text="&rsaquo;"  ng-click="pageChanged()" max-size="maxSize" items-per-page ="itemsPerPage"
+				first-text="&laquo;" last-text="&raquo;"></pagination>
+		</div>
 	</div>
+	
 </div>
 
 

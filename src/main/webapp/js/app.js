@@ -5,13 +5,14 @@ define(['angular',"route",
 	'js/timeline/controller',
 	'js/show/controller','js/show/directive',
 	'js/service/service',
+	'js/upload/controller'
 	],function(){
 
 	'use strict';
 
 	// define app module
-	var appModule = angular.module('App', ['ngRoute',
-		'Timeline','Show','homeDirectiveModule','ShowDirectiveModule',
+	var appModule = angular.module('App', ['ngRoute','angularFileUpload',
+		'Timeline','Show','homeDirectiveModule','ShowDirectiveModule','Upload',
 		'ArticleCtrl','httpService','articleDirectiveModule'
 		]);
 
@@ -59,6 +60,11 @@ define(['angular',"route",
 				.when("/about",{
 									templateUrl : "./js/about/about.html",
 									//controller : 'HelloCtrl',
+									reloadOnSearch : false
+								}
+				).when("/upload",{
+									templateUrl : "./js/upload/upload.html",
+									controller : 'uploadCtrl',
 									reloadOnSearch : false
 								}
 				)

@@ -6,6 +6,7 @@ require.config({
 		'jquery': 'vender/jquery/jquery',
 		'bootstrap': 'vender/bootstrap/bootstrap',
 		'angular' : 'vender/angularjs/angular',
+		'angular-upload' : 'vender/angularjs/angular-file-upload.min',
 		'route':'vender/angular-route/angular-route',
 		'resource':'vender/angular-resource',
 		'domReady':'vender/domReady',
@@ -27,12 +28,15 @@ require.config({
   		},
   		"angular-bootstrap":{
       		deps:['angular']  		
+  		},
+  		"angular-upload":{
+      		deps:['angular']  		
   		}
 	}
 
 });
 
-require(['domReady','angular','js/app','jquery','bootstrap','nicescroll'],function (domReady) {
+require(['domReady','angular','js/app','jquery','bootstrap','nicescroll','angular-upload'],function (domReady) {
 
 	// start angular
 	domReady(function(){

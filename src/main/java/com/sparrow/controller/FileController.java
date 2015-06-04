@@ -52,4 +52,19 @@ public class FileController {
 		}
 		
 	}
+	
+	@RequestMapping(value = "getById", method = RequestMethod.GET)
+	public void getFileById(String id, HttpServletResponse response){
+		OutputStream os = null;
+		try {
+			os = response.getOutputStream();
+			byte[] result = fileService.getFileById(id);
+			if(null != result){
+				os.write(result); 
+			}
+		} catch (IOException e) {
+			
+		}
+		
+	}
 }

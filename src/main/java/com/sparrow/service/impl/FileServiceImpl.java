@@ -12,6 +12,7 @@ import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.stereotype.Service;
 
 import com.mongodb.gridfs.GridFSDBFile;
+import com.mongodb.gridfs.GridFSFile;
 import com.sparrow.exception.MyException;
 import com.sparrow.service.iface.IFileService;
 
@@ -28,15 +29,9 @@ public class FileServiceImpl implements IFileService {
 	GridFsOperations operations;
 
 	@Override
-	public void save(byte[] content, String filename) {
-
-		try {
-			operations.store(new ByteArrayInputStream(content), filename);
-		} catch (Exception e) {
-			e.printStackTrace();
-			//throw new MyException(300, "保存失败！");
-		}
-
+	public String save(byte[] content, String filename) {
+		GridFSFile  gf = operations.store(new ByteArrayInputStream(content), filename);
+		return gf.getId().toString();
 	}
 
 	@Override
@@ -67,6 +62,30 @@ public class FileServiceImpl implements IFileService {
 	public void delete(String fileName) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public byte[] getFileById(String id) {
+		
+	        byte[] result = null;
+			try {
+				GridFSDBFile file = operations.findOne(Query.query(GridFsCriteria.where("_id").is(id)));
+				InputStream inputStream = file.getInputStream();
+				ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+				byte[] buffer = new byte[1024];
+				
+			
+				while (inputStream.read(buffer) != -1)
+					outStream.write(buffer);
+				outStream.flush();
+				result = outStream.toByteArray();
+				inputStream.close();
+				outStream.close();
+			} catch (Exception e) {
+				//throw new MyException(301, "文件不存在！");
+			}
+
+			return result;
 	}
 
 }

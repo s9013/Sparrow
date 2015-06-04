@@ -308,6 +308,11 @@ js
 	上传下载
 
 
+##图片上传
+	遇到的问题
+	http://stackoverflow.com/questions/24390170/unknown-provider-uploadprovider-upload
+	文件根据id 获取
+	GridFSDBFile file = operations.findOne(Query.query(GridFsCriteria.where("_id").is(id)));
 
 	
 	
