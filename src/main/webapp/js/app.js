@@ -65,22 +65,18 @@ define(['angular',"route",
 				).when("/upload",{
 									templateUrl : "./js/upload/upload.html",
 									controller : 'uploadCtrl',
-									reloadOnSearch : false
+									reloadOnSearch : true
 								}
 				)
 				.otherwise({
 						redirectTo : "/home"
 				});
 			}]).run([ "$rootScope", "$window", function($rootScope, $window) {
-
 						$rootScope.$on('$locationChangeSuccess', function(){
-
-							if(arguments[1].indexOf('plan') !== -1){
-								scroll(0,450);
-					        }else{
-					        	scroll(0,0);
-					        }  
-							
+							var nav =  arguments[1].substring(arguments[1].indexOf('#~/'));
+							var $li = $('.collapse li');
+							$li.removeClass('active');
+							$("a[href='"+ nav +"']",$li).parents('li').addClass('active');
 						});  
 					} ]);
 

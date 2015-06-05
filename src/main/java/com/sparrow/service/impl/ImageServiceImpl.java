@@ -43,6 +43,7 @@ public class ImageServiceImpl implements IImageService {
 	@Override
 	public PaginationVo findImageByPagination(Integer page, Integer size) {
 		Query query = new Query();
+		query.with(new Sort(Sort.Direction.DESC,"date"));
     	query.skip((page-1)*size);
 		query.limit(size);
     	List<Image> list = mongoTemplate.find(query, Image.class);

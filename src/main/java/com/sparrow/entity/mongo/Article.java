@@ -9,7 +9,7 @@ import java.util.Date;
 /**
  * Created by Jay on 2015/5/26.
  */
-@Document(collection="Atricle")
+@Document(collection="Article")
 public class Article implements Serializable{
 
     private static final long serialVersionUID = -1330735258248742982L;

@@ -261,6 +261,24 @@ js
 	
 	还是不行
 	
+	fix 需要重写SpringBootServletInitializer
+	
+	
+	package com.sparrow.app;
+
+	import org.springframework.boot.builder.SpringApplicationBuilder;
+	import org.springframework.boot.context.web.SpringBootServletInitializer;
+	
+	public class WebApplication extends SpringBootServletInitializer {
+	
+		@Override
+		protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+			return application.sources(Application.class);
+		}
+	
+	}
+	
+	
 ##mongodb文件上传
 	package com.sparrow.util;
 
@@ -314,5 +332,12 @@ js
 	文件根据id 获取
 	GridFSDBFile file = operations.findOne(Query.query(GridFsCriteria.where("_id").is(id)));
 
+##Mongodb数据导入导出
+	Mongodb中的mongoexport mongoimport
+	--help查看帮助
+	
+	mongoexport -d SparrowDB -c Image -o Image.dat
+	
+	mongoimport -d local -c Image Image.dat
 	
 	

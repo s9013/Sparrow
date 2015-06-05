@@ -67,9 +67,11 @@ define(['angular'],function(){
 			        //fileFormDataName: myFile, //or a list of names for multiple files (html5). Default is 'file' 
 			        // customize how data is added to formData. See #40#issuecomment-28612000 for sample code
 			        //formDataAppender: function(formData, key, val){}
-			      }).progress(function(evt) {        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+			      }).progress(function(evt) {      
+			    	  console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
 			      }).success(function(data, status, headers, config) {        // file is uploaded successfully
 			        console.log(data);
+			        alert('Upload ok');
 			      });      //.error(...)
 			      //.then(success, error, progress); 
 			      // access or attach event listeners to the underlying XMLHttpRequest.
